@@ -1,0 +1,327 @@
+<!doctype html>
+<!--
+THESIS: A bill-to-income calculator that shows household arithmetic and clear routes to established help without making eligibility claims.
+OWN-WORLD: Field-green, ink, and signal-orange; compact utility labels, ruled paper-like dividers, and a precise ledger-style result.
+STORY: Enter a bill and optional income, see the arithmetic, then follow general actions backed by official evidence without implying eligibility or local research.
+FIRST VIEWPORT: A compact masthead sits above a two-column workbench: the input ledger on the left and a high-contrast result with its formula on the right; the calculate action anchors the form.
+FORM: Operate mode, one-page ledger workbench; the chosen structure is a split input/result workspace, staged as a field-ready household worksheet.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6f0">
+    <meta name="description" content="A private, transparent energy-burden calculator with evidence-linked next steps.">
+    <title>LumaLedger — make sense of your energy bill</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="LumaLedger home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M16 3.5 27.5 10v12L16 28.5 4.5 22V10L16 3.5Z" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M18.3 7.9 11.6 17h5l-2.9 7.1 7-9h-5.1l2.7-7.2Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span>Luma<span class="brand-light">Ledger</span></span>
+      </a>
+      <div class="topbar-note"><span class="status-dot"></span> Private by design <span class="topbar-divider">/</span> Demo mode</div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="section-label">HOUSEHOLD ENERGY SNAPSHOT</p>
+          <h1 id="page-title">Make the next bill<br>feel more <span>manageable.</span></h1>
+          <p class="intro-text">A clear look at what energy costs against your income—and a few grounded places to start.</p>
+        </div>
+        <aside class="privacy-stamp" aria-label="Your information stays on this device">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 10V7.8a6 6 0 0 1 12 0V10m-13 0h14v11H5V10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="12" cy="15" r="1.2" fill="currentColor"/>
+          </svg>
+          <span><strong>Your numbers stay here.</strong><br>Nothing is sent or saved.</span>
+        </aside>
+      </section>
+
+      <section class="workbench" aria-label="Energy burden calculator">
+        <div class="input-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">YOUR HOUSEHOLD</p>
+              <h2>Start with two numbers</h2>
+            </div>
+            <span class="step-chip">~ 2 MIN</span>
+          </div>
+
+          <form id="calculator-form" novalidate>
+            <div class="field-grid">
+              <div class="field">
+                <label for="monthly-bill">Monthly energy bill <span class="required-mark" aria-hidden="true">*</span></label>
+                <p class="field-hint" id="bill-hint">Your typical monthly electricity, gas, or heating bill.</p>
+                <div class="currency-input">
+                  <span aria-hidden="true">$</span>
+                  <input id="monthly-bill" name="monthlyBill" type="number" min="0" step="0.01" inputmode="decimal" placeholder="180" required aria-describedby="bill-hint bill-error">
+                </div>
+                <p class="field-error" id="bill-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field">
+                <label for="monthly-income">Monthly household income <span class="optional-tag">OPTIONAL</span></label>
+                <p class="field-hint" id="income-hint">Enter gross income to calculate the share spent on energy.</p>
+                <div class="currency-input">
+                  <span aria-hidden="true">$</span>
+                  <input id="monthly-income" name="monthlyIncome" type="number" min="0" step="0.01" inputmode="decimal" placeholder="4,000" aria-describedby="income-hint income-error">
+                </div>
+                <p class="field-error" id="income-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field field-half">
+                <label for="zip-code">ZIP code <span class="optional-tag">OPTIONAL</span></label>
+                <p class="field-hint" id="zip-hint">For your own reference only. No local lookup is performed.</p>
+                <input class="text-input" id="zip-code" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" placeholder="e.g. 97205" aria-describedby="zip-hint zip-error">
+                <p class="field-error" id="zip-error" aria-live="polite"></p>
+              </div>
+
+              <div class="field field-half">
+                <label for="housing">Home situation <span class="optional-tag">OPTIONAL</span></label>
+                <p class="field-hint" id="housing-hint">Helps shape a general next step.</p>
+                <select class="text-input select-input" id="housing" name="housing" aria-describedby="housing-hint">
+                  <option value="">Choose one</option>
+                  <option value="own">I own my home</option>
+                  <option value="rent">I rent my home</option>
+                  <option value="other">Other / prefer not to say</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="primary-button" type="submit">
+                <span>See my snapshot</span>
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="form-footnote">No account. No upload. Just the math.</span>
+            </div>
+          </form>
+        </div>
+
+        <div class="result-panel" id="result-panel" aria-label="Your energy snapshot and next steps" aria-live="polite">
+          <div class="result-topline">
+            <p class="section-label">YOUR ENERGY SNAPSHOT</p>
+            <span class="local-chip"><span></span> LOCAL DEMO</span>
+          </div>
+          <div class="empty-result" id="empty-result">
+            <div class="meter-illustration" aria-hidden="true">
+              <svg viewBox="0 0 116 116" fill="none">
+                <path d="M18 91.5h80M28 91.5V56h60v35.5M37 56V43.5h42V56" stroke="currentColor" stroke-width="2"/>
+                <path d="M45 44V29h26v15M51 36.5h14M58 29V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="58" cy="72" r="12" stroke="currentColor" stroke-width="2"/>
+                <path d="M58 72 65 66" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M50 83.5h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h2 id="result-heading">Your numbers, in context.</h2>
+            <p>Add a monthly bill and optionally your income to see the calculation and a few useful next steps.</p>
+            <div class="empty-rule"><span></span><span></span><span></span></div>
+            <p class="empty-caption">YOUR SNAPSHOT WILL APPEAR HERE</p>
+          </div>
+
+          <div class="calculated-result" id="calculated-result" hidden>
+            <div class="result-metric">
+              <p class="metric-label" id="metric-label">Share of monthly income</p>
+              <div class="metric-value" id="burden-value">—<span>%</span></div>
+              <p class="metric-caption" id="metric-caption"></p>
+            </div>
+            <div class="formula-row" id="formula-row"></div>
+            <div class="existing-routes" aria-labelledby="existing-routes-heading">
+              <div class="existing-routes-heading">
+                <p class="section-label">EXISTING HELP ROUTES</p>
+                <h2 id="existing-routes-heading">Go straight to established services.</h2>
+              </div>
+              <p class="existing-routes-note">Each service has its own search, referral, and eligibility process. LumaLedger does not send your information to them.</p>
+              <div class="route-links">
+                <a href="https://www.211.org/get-help/utilities-expenses" target="_blank" rel="noreferrer">
+                  <span>211</span><span>Utility bill help <b aria-hidden="true">↗</b></span>
+                </a>
+                <a href="https://liheapch.acf.gov/eligibility-tool" target="_blank" rel="noreferrer">
+                  <span>HHS · LIHEAP</span><span>Eligibility information <b aria-hidden="true">↗</b></span>
+                </a>
+                <a href="https://liheapch.acf.gov/search-tool" target="_blank" rel="noreferrer">
+                  <span>HHS · LIHEAP</span><span>Find an office <b aria-hidden="true">↗</b></span>
+                </a>
+              </div>
+              <p class="eligibility-caveat">LIHEAP rules vary by state and household circumstances. Use the official tool and confirm details with your local office; this snapshot does not determine eligibility.</p>
+            </div>
+            <div class="snapshot-divider"></div>
+            <div class="actions-heading">
+              <div>
+                <p class="section-label">GROUNDED NEXT STEPS</p>
+                <h2>Start with what you can check</h2>
+              </div>
+              <span class="actions-count">3 NOTES</span>
+            </div>
+            <ol class="recommendations" id="recommendations"></ol>
+            <div class="journey-progress" aria-labelledby="journey-heading">
+              <div class="journey-progress-heading">
+                <h3 id="journey-heading">Your next-step progress</h3>
+                <span id="journey-progress-text">0 of 3 next steps marked done</span>
+              </div>
+              <progress id="journey-progress-bar" max="3" value="0" aria-label="Next-step completion"></progress>
+              <p class="journey-local-note">Your checklist is held in this page only and clears when you reset or leave. No one is contacted and no application or data is submitted.</p>
+            </div>
+            <section class="outcome-followup" aria-labelledby="outcome-heading">
+              <p class="section-label">OPTIONAL FOLLOW-UP</p>
+              <h3 id="outcome-heading">What happened after your next step?</h3>
+              <p class="outcome-intro">These outcomes are self-reported, not verified. Sharing them here does not contact a provider or submit an application.</p>
+              <form id="outcome-form" novalidate>
+                <fieldset class="outcome-options">
+                  <legend>Mark any that apply</legend>
+                  <label><input id="outcome-contacted" type="checkbox"> Contacted a utility or provider</label>
+                  <label><input id="outcome-applied" type="checkbox"> Applied to a program</label>
+                  <label><input id="outcome-support" type="checkbox"> Received support</label>
+                </fieldset>
+                <div class="bill-comparison">
+                  <p class="comparison-label">Optional self-reported bill comparison</p>
+                  <div class="comparison-fields">
+                    <div class="comparison-field">
+                      <label for="before-bill">Earlier monthly bill</label>
+                      <div class="currency-input"><span aria-hidden="true">$</span><input id="before-bill" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="200"></div>
+                      <p class="field-error" id="before-bill-error" aria-live="polite"></p>
+                    </div>
+                    <div class="comparison-field">
+                      <label for="after-bill">Later monthly bill</label>
+                      <div class="currency-input"><span aria-hidden="true">$</span><input id="after-bill" type="number" min="0" step="0.01" inputmode="decimal" placeholder="175"></div>
+                      <p class="field-error" id="after-bill-error" aria-live="polite"></p>
+                    </div>
+                  </div>
+                  <p class="comparison-caveat">Compare similar billing periods if possible. The difference is self-reported only and does not show that an action caused a bill change.</p>
+                </div>
+                <p class="outcome-error" id="outcome-error" role="alert"></p>
+                <div class="outcome-actions">
+                  <button class="secondary-button" type="submit">Show my follow-up</button>
+                  <p id="outcome-summary" class="outcome-summary" role="status" hidden></p>
+                </div>
+              </form>
+            </section>
+            <p class="result-disclaimer">These are general starting points, not a determination of eligibility, savings, or available local programs.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="agents-section" aria-labelledby="agents-heading">
+        <div class="agents-header">
+          <div>
+            <p class="section-label">HOW THIS DEMO WORKS</p>
+            <h2 id="agents-heading">Four roles. Clear boundaries.</h2>
+          </div>
+          <p class="agents-disclosure">A transparent, deterministic walkthrough—not live AI or program research.</p>
+        </div>
+        <div class="agent-flow" id="agent-flow" aria-live="polite">
+          <article class="agent-step" data-role="analyst">
+            <span class="agent-index">A</span>
+            <div><h3>Bill Analyst</h3><p>Works out bill ÷ income, using only what you entered.</p></div>
+            <span class="agent-state">READY</span>
+          </article>
+          <article class="agent-step" data-role="researcher">
+            <span class="agent-index">B</span>
+            <div><h3>Program Researcher</h3><p>Points to national sources; does not search for local programs.</p></div>
+            <span class="agent-state">READY</span>
+          </article>
+          <article class="agent-step" data-role="planner">
+            <span class="agent-index">C</span>
+            <div><h3>Action Planner</h3><p>Orders general actions without claiming eligibility or savings.</p></div>
+            <span class="agent-state">READY</span>
+          </article>
+          <article class="agent-step" data-role="checker">
+            <span class="agent-index">D</span>
+            <div><h3>Evidence Checker</h3><p>Keeps the source links and limitations visible.</p></div>
+            <span class="agent-state">READY</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="pilot-section" aria-labelledby="pilot-heading">
+        <div class="pilot-copy">
+          <p class="section-label">PILOT CHECK PLAN</p>
+          <h2 id="pilot-heading">Validate the journey before claiming impact.</h2>
+          <p>Any real-world pilot should be opt-in and consented before it begins. This demo does not recruit participants, contact households, or collect results.</p>
+        </div>
+        <dl class="pilot-metrics">
+          <div><dt>Journey completion</dt><dd>Share of participants who finish the calculator and mark at least one next step.</dd></div>
+          <div><dt>Action progress</dt><dd>Which suggested steps participants choose to mark complete.</dd></div>
+          <div><dt>Self-reported outcomes</dt><dd>Contact, application, or support reports, kept distinct from verified outcomes.</dd></div>
+          <div><dt>Bill comparison</dt><dd>Optional before/after amounts; report direction and missingness, not causal savings.</dd></div>
+          <div><dt>Privacy and usability</dt><dd>Track task completion and confusion with consent; target zero collection or transmission of household inputs.</dd></div>
+        </dl>
+        <p class="pilot-protocol">Suggested protocol: test task comprehension and completion with willing participants only after informed consent and an approved study plan. Summarize aggregate metrics; do not retain raw household bills, ZIP codes, or income.</p>
+      </section>
+
+      <section class="evidence-section" aria-labelledby="evidence-heading">
+        <div class="evidence-intro">
+          <p class="section-label">EVIDENCE, NOT PROMISES</p>
+          <h2 id="evidence-heading">Sources behind the starting points.</h2>
+          <p>These national resources provide context. They do not check a household's eligibility or confirm services in a ZIP code.</p>
+        </div>
+        <div class="source-list">
+          <a class="source-link" href="https://www.findhelp.org/" target="_blank" rel="noreferrer">
+            <span class="source-type">FINDHELP</span>
+            <span class="source-title">Nationwide social care search and referral platform</span>
+            <span class="source-detail">Findhelp describes local resource search and organization-facing closed-loop referral capabilities.</span>
+            <span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="source-link" href="https://liheapch.acf.gov/eligibility-tool" target="_blank" rel="noreferrer">
+            <span class="source-type">U.S. DEPARTMENT OF HEALTH AND HUMAN SERVICES · ACF</span>
+            <span class="source-title">LIHEAP Eligibility Tool</span>
+            <span class="source-detail">Official eligibility information; HHS page lists an update date of February 5, 2026. Rules vary by state, household size, income, and other benefits.</span>
+            <span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="source-link" href="https://liheapch.acf.gov/search-tool" target="_blank" rel="noreferrer">
+            <span class="source-type">U.S. DEPARTMENT OF HEALTH AND HUMAN SERVICES · ACF</span>
+            <span class="source-title">LIHEAP Office Search Tool</span>
+            <span class="source-detail">Find state, territory, or tribal LIHEAP offices and confirm locally available services.</span>
+            <span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="source-link" href="https://www.211.org/get-help/utilities-expenses" target="_blank" rel="noreferrer">
+            <span class="source-type">211</span>
+            <span class="source-title">Utilities assistance and referrals</span>
+            <span class="source-detail">Existing utility-assistance guidance and a route to contact the 211 network.</span>
+            <span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="source-link" href="https://www.energy.gov/cmei/scep/low-income-energy-affordability-data-lead-tool" target="_blank" rel="noreferrer">
+            <span class="source-type">U.S. DEPARTMENT OF ENERGY</span>
+            <span class="source-title">Low-Income Energy Affordability Data (LEAD) Tool</span>
+            <span class="source-detail">Community-level estimates, using ACS 2018–2022 and EIA data. Not household-level eligibility.</span>
+            <span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="source-link" href="https://www.energy.gov/cmei/scep/wap/weatherization-assistance-program-resource-hub" target="_blank" rel="noreferrer">
+            <span class="source-type">U.S. DEPARTMENT OF ENERGY</span>
+            <span class="source-title">Weatherization Assistance Program resource hub</span>
+            <span class="source-detail">Program information and links to find state or local weatherization contacts.</span>
+            <span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="source-link" href="https://www.aceee.org/resource/u2006/" target="_blank" rel="noreferrer">
+            <span class="source-type">AMERICAN COUNCIL FOR AN ENERGY-EFFICIENT ECONOMY</span>
+            <span class="source-title">Energy burden research</span>
+            <span class="source-detail">Research and context on energy costs and household energy burden.</span>
+            <span class="source-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <a class="brand footer-brand" href="./" aria-label="LumaLedger home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M16 3.5 27.5 10v12L16 28.5 4.5 22V10L16 3.5Z" stroke="currentColor" stroke-width="1.7"/><path d="M18.3 7.9 11.6 17h5l-2.9 7.1 7-9h-5.1l2.7-7.2Z" fill="currentColor"/></svg>
+          </span>
+          <span>Luma<span class="brand-light">Ledger</span></span>
+        </a>
+        <p>Built for clarity. Your inputs stay in this browser session and are never transmitted or stored.</p>
+        <button class="reset-button" id="reset-button" type="button">Clear my numbers</button>
+      </footer>
+    </main>
+
+    <script src="./energy.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

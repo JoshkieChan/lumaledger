@@ -1,0 +1,9 @@
+{
+  "name": "lumaledger-mvp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local-only household energy burden calculator demo.",
+  "scripts": {
+    "test": "node --test"
+  }
+}
