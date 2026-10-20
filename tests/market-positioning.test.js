@@ -58,6 +58,11 @@ test("discovery brief includes dated sources, research safeguards, and decision 
     "https://wa211.org/",
     "https://liheapch.acf.gov/search-tool",
     "https://liheapch.acf.gov/eligibility-tool",
+    "https://liheapch.acf.gov/state",
+    "https://www.commerce.wa.gov/community-opportunities/liheap/",
+    "https://fortress.wa.gov/com/liheappublic/map.aspx",
+    "https://www.commerce.wa.gov/energy-policy/energy-assistance/",
+    "https://app.leg.wa.gov/rcw/default.aspx?cite=19.405.120",
     "https://www.energy.gov/cmei/scep/low-income-energy-affordability-data-lead-tool",
     "https://homes.rewiringamerica.org/calculator"
   ]) {
@@ -68,6 +73,11 @@ test("discovery brief includes dated sources, research safeguards, and decision 
   assert.match(discovery, /Washington State/);
   assert.match(discovery, /no county, city, tribal service area, or provider territory is selected or inferred/i);
   assert.match(discovery, /County-level coverage, Washington provider handoffs, referral closure, intake/);
+  assert.match(discovery, /None of this proves that user-facing referral handoffs or application completion are broken, effective, or changing in Washington/);
+  assert.match(discovery, /over 17,000 resource listings/);
+  assert.match(discovery, /RCW 19\.405\.120 requires utility participation-rate\/funding assessments against estimated need/);
+  assert.match(discovery, /not proof of a user-facing participation or follow-through gap/);
+  assert.match(discovery, /Washington Commerce provides verified official LIHEAP guidance and a public local-provider locator/);
   assert.match(discovery, /returned 404/);
   assert.match(discovery, /Do not contact or recruit anyone without the user's prior approval/);
   assert.match(discovery, /Continue to a larger, separately approved pilot only if/);
