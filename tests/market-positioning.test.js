@@ -55,6 +55,7 @@ test("discovery brief includes dated sources, research safeguards, and decision 
   for (const source of [
     "https://www.findhelp.org/",
     "https://www.211.org/get-help/utilities-expenses",
+    "https://wa211.org/",
     "https://liheapch.acf.gov/search-tool",
     "https://liheapch.acf.gov/eligibility-tool",
     "https://www.energy.gov/cmei/scep/low-income-energy-affordability-data-lead-tool",
@@ -63,7 +64,11 @@ test("discovery brief includes dated sources, research safeguards, and decision 
     assert.ok(discovery.includes(source), "missing discovery source: " + source);
   }
   assert.match(discovery, /October 19, 2026/);
-  assert.match(discovery, /No household or navigator interviews, recruitment, pilot, or outreach have been conducted/);
+  assert.match(discovery, /No Washington household or navigator interviews, recruitment, pilot, or outreach have been conducted/);
+  assert.match(discovery, /Washington State/);
+  assert.match(discovery, /no county, city, tribal service area, or provider territory is selected or inferred/i);
+  assert.match(discovery, /County-level coverage, Washington provider handoffs, referral closure, intake/);
+  assert.match(discovery, /returned 404/);
   assert.match(discovery, /Do not contact or recruit anyone without the user's prior approval/);
   assert.match(discovery, /Continue to a larger, separately approved pilot only if/);
   assert.match(discovery, /\*\*Pivot\*\*/);

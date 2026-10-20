@@ -42,3 +42,5 @@ Before conducting any real-world pilot, obtain informed consent and an approved 
 These are a concise comparison of the cited public product pages, not an exhaustive competitor study. Capabilities can change; recheck source pages before relying on the comparison in external materials.
 
 See [DISCOVERY.md](DISCOVERY.md) for the proposed consent-first two-week discovery protocol, neutral interview guides, privacy safeguards, measures, and continue/pivot/stop criteria. No discovery interviews or outreach have been conducted; user approval is required before contacting or recruiting anyone.
+
+The initial discovery scope is Washington State, as selected by the user. No Washington county, city, tribal service area, or utility territory has been selected; local coverage and provider workflows remain unverified pending official validation.

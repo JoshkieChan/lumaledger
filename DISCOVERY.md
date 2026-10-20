@@ -1,7 +1,9 @@
 # LumaLedger discovery brief
 
 **Prepared:** October 19, 2026
-**Status:** Proposal only. No household or navigator interviews, recruitment, pilot, or outreach have been conducted. Do not contact or recruit anyone without the user's prior approval.
+
+**Initial discovery scope:** Washington State only. No county, city, or utility service area has been selected.
+**Status:** Proposal only. No Washington household or navigator interviews, recruitment, pilot, or outreach have been conducted. Do not contact or recruit anyone without the user's prior approval.
 
 ## 1. Dated adjacent-solutions map
 
@@ -11,6 +13,7 @@ Public product/source pages below were checked on October 19, 2026. This is a co
 | --- | --- |
 | [Findhelp](https://www.findhelp.org/) | Nationwide social-care resource discovery, including local assistance search. Its organization-facing platform describes closed-loop referrals, reporting, and related social-care workflows. |
 | [211 utilities assistance](https://www.211.org/get-help/utilities-expenses) | Utilities-expense help guidance and a route to the 211 network for help/referrals. The page reports over 2.1 million utility-bill/resource connections in **2019**; this is a historical figure, not a current volume estimate. |
+| [Washington 211](https://wa211.org/) | Washington-specific page describes a free, confidential, multilingual helpline connected to local community services, including utility assistance, and a searchable resource database with 17,000+ listings. The page does not establish county-level coverage or provider handoff workflows for this proposed study. |
 | [HHS LIHEAP Clearinghouse office search](https://liheapch.acf.gov/search-tool) | Search routes for state, territory, and tribal LIHEAP offices. Describes potential energy-bill, weatherization, and crisis assistance; service availability depends on location. |
 | [HHS LIHEAP Eligibility Tool](https://liheapch.acf.gov/eligibility-tool) | Eligibility information; page states **last updated February 5, 2026**. Eligibility varies by state and household size, income, and other benefits. Confirm decisions with the appropriate office. |
 | [DOE LEAD](https://www.energy.gov/cmei/scep/low-income-energy-affordability-data-lead-tool) | Aggregate geographic and household-characteristic data for planning and analysis, sourced from ACS five-year 2018–2022 and EIA utility data. It is not a personalized household eligibility determination. |
@@ -20,6 +23,10 @@ Public product/source pages below were checked on October 19, 2026. This is a co
 
 ## 2. Unknowns to resolve
 
+- Which Washington State agencies, community action agencies, tribes, utilities, and referral partners serve each area, and what their current intake, handoff, follow-up, and closed-loop workflows are.
+- Whether the WA 211 database and search routes cover the participant's specific need and location, how current listings are, and when telephone navigation differs from online search.
+- Washington-specific LIHEAP program rules, administering offices, application steps, and service availability for any eventual participant; national HHS pages are starting routes, not confirmation of a Washington household's eligibility or local provider workflow.
+- Which counties, tribal service areas, utility territories, languages, and rural/urban contexts should be included for a bounded study; none is selected or inferred yet.
 - How often households must move between directories, eligibility guidance, utility contacts, and assistance applications to resolve one affordability need.
 - Where people abandon or repeat steps, and what causes that friction (including wait times, documentation, language access, trust, or changing circumstances).
 - Whether people find a private, user-controlled cross-service checklist useful beyond existing navigator and referral workflows.
@@ -28,27 +35,27 @@ Public product/source pages below were checked on October 19, 2026. This is a co
 - Whether navigators see value, duplication, workflow burden, or any need for provider-facing integrations.
 - Whether any organization would fund this work, and whether procurement, consent, and data-governance requirements can be met.
 
-An unobserved capability is unknown, not absent. Interviews and product-page review cannot by themselves validate impact or willingness to pay.
+An unobserved capability or local workflow is unknown, not absent. Interviews and product-page review cannot by themselves validate impact or willingness to pay.
 
 ## 3. Falsifiable hypothesis
 
-**Hypothesis:** In one geography selected later, adults seeking help with household energy costs who use the LumaLedger cross-service checklist will complete at least one relevant next step within seven days at a higher rate than people given the same existing-resource links without the checklist.
+**Hypothesis:** Among adults in a Washington State service area selected only after validation and approval who seek help with household energy costs, people using the LumaLedger cross-service checklist will complete at least one relevant next step within seven days at a higher rate than people given the same verified existing-resource links without the checklist.
 
 **Falsification rule:** Do not support the hypothesis if the prototype group does not exceed the link-only comparison on the pre-registered seven-day action-completion measure, or if participants cannot accurately describe that services determine their own eligibility and outcomes are self-reported. A small discovery sample is directional only; it cannot prove general effectiveness or a market gap.
 
 ## 4. Proposed two-week discovery plan
 
-**Geography is intentionally unselected.** Choose one state/local service area only after the user explicitly approves the geography and any contact/recruitment. Do not infer it from the user's location or the demo ZIP field.
+**Initial scope is Washington State, selected by the user.** No county, city, tribal service area, or utility territory is selected. Choose a bounded local study area only after validating current official routes and obtaining the user's explicit approval for the specific area and any contact/recruitment. Never infer a location from the user's location or the demo ZIP field.
 
 | Timing | Proposed work | Output |
 | --- | --- | --- |
-| Days 1–2 | Select one geography with user approval; map official 211/LIHEAP/utility routes; document language/accessibility needs and current workflow from public sources. | Dated local service map and protocol changes. |
+| Days 1–2 | Keep the scope statewide while mapping only verified starting routes: [Washington 211](https://wa211.org/), the [HHS LIHEAP office search](https://liheapch.acf.gov/search-tool), and the [HHS eligibility tool](https://liheapch.acf.gov/eligibility-tool). Record county, utility, tribal, and provider workflows as unknown until directly validated. Propose—but do not select—a bounded local study area. | Dated Washington-wide starting-route map; list of locally unresolved workflows. |
 | Days 3–4 | Prepare consent script, neutral interview materials, data-minimization plan, and a task-only prototype protocol. Obtain any required institutional/organizational review before recruitment. | Approved materials; no participant contact yet. |
-| Days 5–9 | If separately approved, invite a small purposive sample (suggested: 8 households and 4–6 frontline navigators). Conduct 30–45 minute interviews. Household task comparison: existing links alone versus the same links with the optional checklist, order balanced where practical. | De-identified notes and task observations. |
+| Days 5–9 | Only after the user approves the specific Washington locality and recruitment, invite a small purposive sample (suggested: 8 households and 4–6 frontline navigators). Conduct 30–45 minute interviews. Household task comparison: the same locally validated links alone versus with the optional checklist, order balanced where practical. | De-identified notes and task observations; do not generalize a local sample to all Washington. |
 | Days 10–11 | If approved participants consent to follow-up, collect a seven-day action check-in. Make it clear the check-in is optional and no provider verification occurs. | Self-reported completion and missingness. |
 | Days 12–14 | Summarize aggregate metrics, differences, usability issues, accessibility gaps, and contrary evidence. Apply the criteria below; update the hypothesis before any larger pilot. | Continue / pivot / stop recommendation and unresolved risks. |
 
-The sample and comparison are proposed discovery methods, not a claim of statistical power. Without user approval, stop before selecting a geography, inviting participants, or contacting any household, navigator, service, or organization.
+The sample and comparison are proposed discovery methods, not a claim of statistical power. Without explicit user approval, stop before selecting a county/city/provider service area, inviting participants, or contacting any household, navigator, service, or organization. Washington State is the only geography selected so far.
 
 ## 5. Neutral interview guides
 
@@ -88,7 +95,7 @@ Do not ask navigators for client names, case histories, referral records, confid
 
 ## 6. Consent, privacy, and safety constraints
 
-- No outreach, recruitment, interviews, submissions, or participant enrollment have occurred. Obtain explicit user approval before any such activity.
+- No Washington local interviews, outreach, recruitment, submissions, or participant enrollment have occurred. Obtain explicit user approval before any such activity.
 - If approved, explain the purpose, activities, duration, voluntary nature, risks, note-taking, retention/deletion, and that declining does not affect service access. Obtain affirmative informed consent before research activities; do not treat use of this demo as research consent.
 - Use synthetic inputs for usability tasks. Do not collect names, contact information, exact address, ZIP, utility/provider account identifiers, case/application numbers, documents, immigration status, or precise benefit/eligibility details.
 - Do not record audio/video or link notes to identity unless a separately reviewed protocol and explicit consent authorize it. Default to no recording.
@@ -120,15 +127,18 @@ No gate proves willingness to pay, market size, defensibility, or broad impact. 
 
 ## 8. Limits and source record
 
-- No interviews, outreach, recruitment, pilot sessions, or willingness-to-pay research have been conducted.
+- No Washington local interviews, outreach, recruitment, pilot sessions, or willingness-to-pay research have been conducted.
 - No market gap or defensibility is proven. The cross-service follow-through idea is a falsifiable hypothesis, not an established distinction.
-- No geography is selected or inferred. User approval is required before choosing one for outreach or contacting/recruiting anyone.
+- Washington State is the user-selected initial scope; no county, city, tribal service area, or provider territory is selected or inferred. User approval is required before choosing a bounded local study area or contacting/recruiting anyone.
+- County-level coverage, Washington provider handoffs, referral closure, intake, application timing, and Washington-specific eligibility detail remain unknown pending direct validation with official sources and, only after approval, local research. National HHS routes are not a substitute for confirming Washington rules or an individual's eligibility.
+- Some candidate Washington Commerce URLs checked during source review returned 404. They are excluded from the source map; this does not demonstrate that Washington has no related program or that other official Commerce pages are unavailable.
 - Source pages were accessed October 19, 2026. Public descriptions may omit features; absence from a page is not proof a capability does not exist. Recheck pages before relying on this snapshot.
 
 Sources:
 
 - [Findhelp](https://www.findhelp.org/)
 - [211 utilities assistance](https://www.211.org/get-help/utilities-expenses) — page cites 2.1M+ utility-resource connections in 2019.
+- [Washington 211](https://wa211.org/) — statewide helpline and searchable resource database as described on its public page; county/provider workflows not confirmed.
 - [HHS LIHEAP Clearinghouse search tool](https://liheapch.acf.gov/search-tool)
 - [HHS LIHEAP Eligibility Tool](https://liheapch.acf.gov/eligibility-tool) — last updated 2026-02-05.
 - [DOE LEAD](https://www.energy.gov/cmei/scep/low-income-energy-affordability-data-lead-tool) — ACS five-year 2018–2022 and EIA data.
