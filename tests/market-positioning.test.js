@@ -6,6 +6,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const indexHtml = fs.readFileSync(path.join(__dirname, "..", "index.html"), "utf8");
+const appJs = fs.readFileSync(path.join(__dirname, "..", "app.js"), "utf8");
 const readme = fs.readFileSync(path.join(__dirname, "..", "README.md"), "utf8");
 const discovery = fs.readFileSync(path.join(__dirname, "..", "DISCOVERY.md"), "utf8");
 
@@ -19,6 +20,18 @@ test("prominently routes households to existing 211 and LIHEAP tools", () => {
   assert.match(routeSection, /https:\/\/liheapch\.acf\.gov\/eligibility-tool/);
   assert.match(routeSection, /https:\/\/liheapch\.acf\.gov\/search-tool/);
   assert.match(routeSection, /does not send your information/);
+});
+
+test("provides an accessible income period control and explains annual normalization", () => {
+  assert.match(indexHtml, /<label for="income-period">Income frequency<\/label>/);
+  assert.match(indexHtml, /<select[^>]+id="income-period"[^>]+name="incomePeriod"/);
+  assert.match(indexHtml, /<option value="monthly" selected>Monthly<\/option>/);
+  assert.match(indexHtml, /<option value="annual">Annual<\/option>/);
+  assert.match(indexHtml, /id="income-period"[^>]+aria-describedby="income-hint"/);
+  assert.match(indexHtml, /annual amounts are divided by 12 for the monthly calculation/i);
+  assert.match(appJs, /normalizeIncomeToMonthly\(income, incomePeriod\)/);
+  assert.match(appJs, /Annual income of " \+ amount\(income\) \+ " ÷ 12 = "/);
+  assert.match(appJs, /" monthly equivalent"/);
 });
 
 test("documents dated adjacent solutions and explicitly provisional positioning", () => {

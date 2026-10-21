@@ -4,6 +4,7 @@
   var form = document.getElementById("calculator-form");
   var billInput = document.getElementById("monthly-bill");
   var incomeInput = document.getElementById("monthly-income");
+  var incomePeriodInput = document.getElementById("income-period");
   var zipInput = document.getElementById("zip-code");
   var housingInput = document.getElementById("housing");
   var billError = document.getElementById("bill-error");
@@ -251,7 +252,11 @@
 
     if (!valid) return;
 
-    var snapshot = window.EnergyCalculator.calculateEnergyBurden(bill, income);
+    var incomePeriod = incomePeriodInput.value;
+    var monthlyIncome = income === null
+      ? null
+      : window.EnergyCalculator.normalizeIncomeToMonthly(income, incomePeriod);
+    var snapshot = window.EnergyCalculator.calculateEnergyBurden(bill, monthlyIncome);
     var value = document.getElementById("burden-value");
     var label = document.getElementById("metric-label");
     var caption = document.getElementById("metric-caption");
@@ -264,18 +269,21 @@
       formula.replaceChildren();
       formula.appendChild(document.createTextNode("Income not entered — percentage not calculated."));
     } else {
-      label.textContent = "Share of monthly household income";
+      label.textContent = "Share of gross monthly household income";
       value.textContent = "";
       var formattedPercent = document.createTextNode(snapshot.burdenPercent.toFixed(1));
       var percent = document.createElement("span");
       percent.textContent = "%";
       value.append(formattedPercent, percent);
-      caption.textContent = "of the gross monthly income you entered goes to this bill.";
+      caption.textContent = incomePeriod === "annual"
+        ? "Annual income of " + amount(income) + " ÷ 12 = " +
+          amount(snapshot.monthlyIncome) + " gross monthly equivalent."
+        : "of the gross monthly income you entered goes to this bill.";
       formula.replaceChildren();
       [
         { text: amount(snapshot.monthlyBill), sign: "" },
         { text: "÷", sign: "operator" },
-        { text: amount(snapshot.monthlyIncome), sign: "" },
+        { text: amount(snapshot.monthlyIncome) + " monthly equivalent", sign: "" },
         { text: "× 100", sign: "operator" },
         { text: "= " + snapshot.burdenPercent.toFixed(1) + "%", sign: "" }
       ].forEach(function (part) {

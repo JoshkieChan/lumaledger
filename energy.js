@@ -1,6 +1,22 @@
 (function (root) {
   "use strict";
 
+  function normalizeIncomeToMonthly(income, period) {
+    if (period !== "monthly" && period !== "annual") {
+      throw new RangeError("Income period must be monthly or annual.");
+    }
+
+    if (!Number.isFinite(income) || income <= 0) {
+      throw new RangeError("Household income must be greater than zero.");
+    }
+
+    var monthlyIncome = period === "annual" ? income / 12 : income;
+    if (monthlyIncome <= 0) {
+      throw new RangeError("Household income must have a positive monthly equivalent.");
+    }
+    return monthlyIncome;
+  }
+
   function calculateEnergyBurden(monthlyBill, monthlyIncome) {
     if (!Number.isFinite(monthlyBill) || monthlyBill < 0) {
       throw new RangeError("Monthly energy bill must be a non-negative number.");
@@ -89,6 +105,7 @@
 
   var api = {
     calculateEnergyBurden: calculateEnergyBurden,
+    normalizeIncomeToMonthly: normalizeIncomeToMonthly,
     calculateJourneyProgress: calculateJourneyProgress,
     calculateSelfReportedBillChange: calculateSelfReportedBillChange,
     summarizePilotOutcome: summarizePilotOutcome

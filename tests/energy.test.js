@@ -4,6 +4,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const {
   calculateEnergyBurden,
+  normalizeIncomeToMonthly,
   calculateJourneyProgress,
   calculateSelfReportedBillChange,
   summarizePilotOutcome
@@ -15,6 +16,22 @@ test("calculates monthly energy burden from bill and income", () => {
     monthlyIncome: 4000,
     burdenPercent: 4.5
   });
+});
+
+test("normalizes annual gross income to its monthly equivalent", () => {
+  assert.equal(normalizeIncomeToMonthly(48000, "annual"), 4000);
+  assert.equal(normalizeIncomeToMonthly(4000, "monthly"), 4000);
+  assert.equal(
+    calculateEnergyBurden(180, normalizeIncomeToMonthly(48000, "annual")).burdenPercent,
+    4.5
+  );
+});
+
+test("rejects invalid income amounts and periods during normalization", () => {
+  for (const invalidIncome of [0, -1, NaN, Infinity]) {
+    assert.throws(() => normalizeIncomeToMonthly(invalidIncome, "annual"), RangeError);
+  }
+  assert.throws(() => normalizeIncomeToMonthly(48000, "weekly"), RangeError);
 });
 
 test("returns bill only when income is omitted", () => {

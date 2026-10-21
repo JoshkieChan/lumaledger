@@ -2,6 +2,8 @@
 
 A dependency-free, client-side demo for understanding a household's monthly energy bill relative to income and finding evidence-linked starting points.
 
+The optional gross household income can be entered monthly or annually. Annual income is divided by 12 and compared with the monthly energy bill using that monthly equivalent.
+
 ## Run
 
 Open `index.html` in a modern browser. No build step, account, API key, or server is required.
